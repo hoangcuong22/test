@@ -1,0 +1,6 @@
+node_modules
+prettierignore
+yarn.lock
+expo
+#/app/config/config.prod.ts
+

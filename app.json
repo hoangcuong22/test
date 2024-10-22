@@ -1,0 +1,80 @@
+{
+  "name": "Test",
+  "displayName": "Test",
+  "expo": {
+    "name": "Test",
+    "slug": "test",
+    "scheme": "Test",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/splash.jpg",
+    "splash": {
+      "image": "./assets/images/splash.jpg",
+      "resizeMode": "contain",
+      "backgroundColor": "#191015"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "1ee7c1fd-cf4d-462d-8c56-44de89f870ef"
+      }
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "jsEngine": "hermes",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "android": {
+      "icon": "./assets/images/splash.jpg",
+      "package": "com.nasa.test",
+      "splash": {
+        "image": "./assets/images/splash.jpg",
+        "resizeMode": "contain",
+        "backgroundColor": "#191015"
+      },
+      "versionCode": "1"
+    },
+    "ios": {
+      "icon": "./assets/images/splash.jpg",
+      "supportsTablet": true,
+      "splash": {
+        "image": "./assets/images/splash.jpg",
+        "tabletImage": "./assets/images/splash.jpg",
+        "resizeMode": "contain",
+        "backgroundColor": "#191015"
+      },
+      "buildNumber": "1"
+    },
+    "web": {
+      "favicon": "./assets/images/app-icon-web-favicon.png",
+      "splash": {
+        "image": "./assets/images/splash-logo-web.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#191015"
+      },
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-localization",
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "newArchEnabled": false
+          },
+          "android": {
+            "newArchEnabled": false
+          }
+        }
+      ],
+      "expo-font"
+    ],
+    "experiments": {
+      "tsconfigPaths": true
+    }
+  },
+  "ignite": {
+    "version": "9.10.1"
+  }
+}
