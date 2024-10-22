@@ -1,4 +1,9 @@
+
 run project with android: yarn android
+run project with ios :1, yarn expo prebuild -p ios
+2,cd ios && pod install
+3,yarn ios
+
 
 
 screenshot:![Screenshot_1729581760](https://github.com/user-attachments/assets/3e03126a-39ea-4dee-9d7e-f99b17a302b3)
