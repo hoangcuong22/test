@@ -8,8 +8,8 @@ export const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
     alignItems: "center",
-    padding: 10,
-    backgroundColor: "#f8f8f8",
+    padding: 16,
+    backgroundColor: "#fff",
     justifyContent: "space-between",
   },
   logo: {
@@ -43,26 +43,12 @@ export const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 10,
   },
-  categoryButton: {
-    backgroundColor: "#e0e0e0",
-    borderRadius: 5,
-    padding: 10,
-    marginRight: 10,
-    flex: 1,
-  },
-  categoryButton0: {
-    backgroundColor: "#FEDF89",
-    borderRadius: 5,
-    padding: 10,
-    marginRight: 10,
-    flex: 1,
-  },
+
   categoryText: {
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: "500",
-  },
-  productList: {
-    padding: 10,
+    marginLeft: 8,
+    lineHeight: 15,
   },
   productCard: {
     flex: 1,
@@ -82,14 +68,14 @@ export const styles = StyleSheet.create({
   },
   productName: {
     marginTop: 10,
-    fontSize: 16,
-    fontWeight: "bold",
+    fontSize: 12,
+    fontWeight: "500",
   },
   productPrice: {
     marginTop: 5,
-    fontSize: 14,
-    color: "#2E90FA",
-    fontWeight: "700",
+    fontSize: 16,
+    color: "#0D121C",
+    fontWeight: "600",
   },
   loader: {
     paddingVertical: 20,

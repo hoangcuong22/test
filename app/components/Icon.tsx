@@ -10,6 +10,7 @@ import {
   ViewProps,
   ViewStyle,
 } from "react-native"
+import image from "reactotron-core-client/dist/types/src/plugins/image"
 
 export type IconTypes = keyof typeof iconRegistry
 
@@ -103,6 +104,26 @@ export const iconRegistry = {
   user: require("../../assets/icons/user.png"),
   cart: require("../../assets/icons/cart.png"),
   frame: require("../../assets/icons/Frame.png"),
+  search: require("../../assets/icons/search.png"),
+  vector: require("../../assets/icons/vector.png"),
+  tv: require("../../assets/icons/tv.png"),
+  image: require("../../assets/icons/image.png"),
+  frame1: require("../../assets/icons/Frame1.png"),
+  lightning: require("../../assets/icons/lightning.png"),
+  chevron_right: require("../../assets/icons/chevron_right.png"),
+  crown: require("../../assets/icons/crown.png"),
+  check1: require("../../assets/icons/check1.png"),
+  home: require("../../assets/icons/home.png"),
+  Contributions: require("../../assets/icons/Contributions.png"),
+  cart_home: require("../../assets/icons/cart_home.png"),
+  chat: require("../../assets/icons/chat.png"),
+  dot: require("../../assets/icons/3dot.png"),
+  bag: require("../../assets/icons/bag.png"),
+  book: require("../../assets/icons/book.png"),
+  shield: require("../../assets/icons/shield.png"),
+  car:require("../../assets/icons/car.png"),
+  shop: require("../../assets/icons/shop.png"),
+  heart:require("../../assets/icons/heart.png"),
 }
 
 const $imageStyleBase: ImageStyle = {

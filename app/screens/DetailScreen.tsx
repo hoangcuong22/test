@@ -1,5 +1,5 @@
 import { RouteProp, useNavigation } from "@react-navigation/native"
-import { Header } from "app/components"
+import { Header, Icon } from "app/components"
 import { AppStackParamList } from "app/navigators"
 import React from "react"
 import {
@@ -9,119 +9,127 @@ import {
   ScrollView,
   Image,
   ImageSourcePropType,
-  FlatList,
   TouchableOpacity,
+  Dimensions,
 } from "react-native"
 import { useRoute } from "@react-navigation/native"
-import { FontAwesome } from "@expo/vector-icons"
-
-interface Review {
-  id: string
-  user: string
-  comment: string
-  rating: number
-}
+import Voucher from "./detail/Voucher"
+import Payment from "./detail/Payment"
+import Transport from "./detail/Transport"
+import ReturnPolicy from "./detail/ReturnPolicy"
+import ProductIntroduction from "./detail/ProductIntroduction"
+import Riview from "./detail/Riview"
+import Statistical from "./detail/Statistical"
+import Size from "./detail/Size"
+import Color from "./detail/Color"
 
 export interface IData {
   id: string
   name: string
   price: string
   image: ImageSourcePropType
+  statusBuy?: string
 }
 
-//fake data review
-const reviews: Review[] = [
-  {
-    id: "1",
-    user: "Nguyen Van A",
-    comment: "Sản phẩm rất tốt, phù hợp với da nhạy cảm.",
-    rating: 5,
-  },
-  {
-    id: "2",
-    user: "Le Thi B",
-    comment: "Giao hàng nhanh, nhưng chưa dùng thử ",
-    rating: 4,
-  },
-  {
-    id: "3",
-    user: "Tran Van C",
-    comment: "Sản phẩm không gây kích ứng, nhưng giá hơi cao.",
-    rating: 3,
-  },
-  {
-    id: "4",
-    user: "Pham Thi D",
-    comment: "Rất thích sản phẩm này, da mình không bị khô ",
-    rating: 5,
-  },
-  {
-    id: "5",
-    user: "Hoang Van E",
-    comment: "Sản phẩm ổn nhưng không như mong đợi.",
-    rating: 2,
-  },
-]
+const { height } = Dimensions.get("window")
 
 const DetailScreen = () => {
   const navigation = useNavigation<AppStackParamList>()
   const route = useRoute<RouteProp<{ params: IData }, "params">>()
   const { params } = route
 
-  const renderReview = ({ item }: { item: Review }) => (
-    <View style={styles.reviewContainer}>
-      <Text style={styles.reviewUser}>{item.user}</Text>
-      <Text style={styles.reviewComment}>{item.comment}</Text>
-      {renderStars(item.rating)}
-    </View>
-  )
-
-  const renderStars = (rating: number) => {
-    const stars = []
-    for (let i = 1; i <= 5; i++) {
-      stars.push(
-        <FontAwesome key={i} name={i <= rating ? "star" : "star-o"} size={20} color="#FFD700" />,
-      )
-    }
-    return <View style={styles.starsContainer}>{stars}</View>
-  }
-
   return (
     <>
-      <Header leftIcon="back" onLeftPress={() => navigation.goBack()} title="CHI TIẾT SẢN PHẨM" />
+      <Header leftIcon="back" onLeftPress={() => navigation.goBack()} />
       <ScrollView style={styles.container}>
         <View>
           <Image source={params.image} style={styles.productImage} />
-
-          <Text style={styles.productName}>{params?.name}</Text>
           <View style={styles.containerPrice}>
             <Text style={styles.productPrice}>{params?.price}</Text>
-            <TouchableOpacity style={styles.btnBuy}>
-              <Text>Mua ngay</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.btnAddCart}>
-              <Text>Thêm vào giỏ hàng</Text>
-            </TouchableOpacity>
+            {!!params?.statusBuy && (
+              <TouchableOpacity style={styles.btnBuy}>
+                <Text style={{ fontWeight: "400", fontSize: 11 }}>{params?.statusBuy}</Text>
+              </TouchableOpacity>
+            )}
           </View>
-          <View>
-            <Text style={styles.sectionTitle}>Mô tả sản phẩm</Text>
-            <Text style={styles.sectionContent}>
-              {`THÔNG TIN THƯƠNG HIỆU \nSimple là thương hiệu dành cho da nhạy cảm được ưa chuộng số 1 ở thị trường UK, sản phẩm được bán hầu hết trong các hiệu thuốc, thành phần lành tính, là sản phẩm hoàn hảo nhất cho làn da nhạy cảm.`}
+          <Text style={styles.productName}>{params?.name}</Text>
+          <Color />
+          <Size />
+          <Voucher />
+          <Payment />
+          <Transport />
+          <ReturnPolicy />
+          <ProductIntroduction />
+          <Riview />
+          <Statistical />
+        </View>
+      </ScrollView>
+      <View
+        style={{
+          height: height * 0.085,
+          flexDirection: "row",
+          marginHorizontal: 16,
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <View style={{ flexDirection: "row" }}>
+          <View style={{ alignItems: "center", marginRight: 12 }}>
+            <Icon icon="shop" size={19} />
+            <Text style={{ color: "#4D5761", fontSize: 8, fontWeight: "500", lineHeight: 12 }}>
+              Cửa hàng
             </Text>
-            <Text style={styles.sectionContent}>
-              {`CÔNG DỤNG \nSimple là thương hiệu dành cho da nhạy cảm được ưa chuộng số 1 ở thị trường UK, sản phẩm được bán hầu hết trong các hiệu thuốc, thành phần lành tính, là sản phẩm hoàn hảo nhất cho làn da nhạy cảm.`}
+          </View>
+          <View style={{ alignItems: "center", marginRight: 12 }}>
+            <Icon icon="chat" size={20} />
+            <Text style={{ color: "#4D5761", fontSize: 8, fontWeight: "500", lineHeight: 12 }}>
+              Trò chuyện
             </Text>
-            <Text style={styles.sectionContent}>
-              {`THÀNH PHẦN \nSimple là thương hiệu dành cho da nhạy cảm được ưa chuộng số 1 ở thị trường UK, sản phẩm được bán hầu hết trong các hiệu thuốc, thành phần lành tính, là sản phẩm hoàn hảo nhất cho làn da nhạy cảm.`}
+          </View>
+          <View style={{ alignItems: "center", marginRight: 12 }}>
+            <Icon icon="heart" size={20} />
+            <Text style={{ color: "#4D5761", fontSize: 8, fontWeight: "500", lineHeight: 12 }}>
+              Yêu thích
             </Text>
           </View>
         </View>
-
-        <Text style={styles.sectionTitle}>Đánh giá sản phẩm</Text>
-        <ScrollView horizontal={true} scrollEnabled={false} showsVerticalScrollIndicator={false}>
-          <FlatList data={reviews} renderItem={renderReview} keyExtractor={(item) => item.id} />
-        </ScrollView>
-      </ScrollView>
+        <View style={{ flexDirection: "row" }}>
+          <TouchableOpacity
+            style={{
+              flexDirection: "row",
+              backgroundColor: "white",
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: 8,
+              borderWidth: 0.5,
+              paddingHorizontal: 8,
+              paddingVertical: 3,
+              borderColor: "#3864FF",
+              marginRight: 20,
+            }}
+          >
+            <Text style={{ fontSize: 14, fontWeight: "600", lineHeight: 20, color: "#3864FF" }}>
+              {` Thêm vào \n giỏ hàng`}
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{
+              flexDirection: "row",
+              backgroundColor: "#3864FF",
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: 8,
+              borderWidth: 0.5,
+              paddingHorizontal: 8,
+              paddingVertical: 3,
+            }}
+          >
+            <Text style={{ fontSize: 14, fontWeight: "600", lineHeight: 20, color: "#FFFFFF" }}>
+              {` Mua với \n voucher`}
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </View>
     </>
   )
 }
@@ -139,13 +147,14 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   productName: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginVertical: 10,
+    fontSize: 12,
+    fontWeight: "400",
+    lineHeight: 16,
   },
   productPrice: {
     fontSize: 20,
-    color: "green",
+    color: "#F04438",
+    fontWeight: "700",
   },
   sectionTitle: {
     fontSize: 18,
@@ -175,18 +184,17 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   containerPrice: {
-    marginBottom: 10,
     flexDirection: "row",
     justifyContent: "space-between",
   },
   btnBuy: {
     borderRadius: 6,
-    borderWidth: 1,
-    flex: 1,
+    borderWidth: 0.5,
     justifyContent: "center",
     alignItems: "center",
     marginLeft: 10,
-    backgroundColor: "#FEDF89",
+    width: 70,
+    backgroundColor: "#F3F4F6",
   },
   btnAddCart: {
     borderRadius: 6,

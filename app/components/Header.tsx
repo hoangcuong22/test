@@ -153,13 +153,6 @@ export function Header(props: HeaderProps) {
     leftTx,
     leftTxOptions,
     onLeftPress,
-    onRightPress,
-    RightActionComponent,
-    rightIcon,
-    rightIconColor,
-    rightText,
-    rightTx,
-    rightTxOptions,
     safeAreaEdges = ["top"],
     title,
     titleMode = "center",
@@ -206,17 +199,18 @@ export function Header(props: HeaderProps) {
             />
           </View>
         )}
-
-        <HeaderAction
-          tx={rightTx}
-          text={rightText}
-          icon={rightIcon}
-          iconColor={rightIconColor}
-          onPress={onRightPress}
-          txOptions={rightTxOptions}
-          backgroundColor={backgroundColor}
-          ActionComponent={RightActionComponent}
-        />
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-around",
+            alignItems: "center",
+            marginRight: 16,
+          }}
+        >
+          <Icon icon="search" size={28} />
+          <Icon size={24} icon="bell" style={{ marginLeft: 16 }} />
+          <Icon icon="dot" size={24} style={{ marginLeft: 16 }} />
+        </View>
       </View>
     </View>
   )
