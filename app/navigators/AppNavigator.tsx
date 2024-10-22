@@ -40,6 +40,7 @@ const MainTabs = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }: any) => ({
+        tabBarLabel:"",
         tabBarIcon: ({ focused, color, size, style }: any) => {
           let iconName: any
           switch (route.name) {
